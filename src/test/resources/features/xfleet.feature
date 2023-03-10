@@ -43,16 +43,43 @@ Feature: XFleet user  Feature
       | 45user45        | UserUser123     |
       | /user45/        | UserUser123     |
 
+    @EmptyField
     Scenario Outline: Please fill out this field
       Given user must be able to enter "<username>"
       And user must be able to enter_p "<password>"
-      And user click login button
+      And user click login button "<username>" and "<password>"
 
       Examples: Username and Pssword
         | username | password    |
         |          |             |
         |          | UserUser123 |
         | user2    |             |
+
+      @ForgotPassB
+      Scenario: when user is forgot password
+        Given user click to forgot password button
+        Given user is forgot password
+
+
+      Scenario: is clickable of remember me check box
+        Given user click to remember me button
+
+      Scenario: User should see the password in bullet signs by default
+        Given check the signs the password field
+
+      Scenario Outline: All users can see their own usernames in the profile menu, after successful login
+        Given user must be able to enter "<username>"
+        And user must be able to enter_p "<password>"
+        And user must be click to login button
+        And user can see username is profile menu
+
+
+
+
+
+
+
+
 
 
 

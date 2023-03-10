@@ -43,5 +43,14 @@ public class XFleetPage {
     @FindBy(xpath = "//*[@class='oro-subtitle']")
     public WebElement dashBoard;
 
+    @FindBy(xpath = "//*[@id=\"login-form\"]/fieldset/div[3]/a")
+    public WebElement forgotPasswordButton;
+
+    @FindBy(id = "remember_me")
+    public WebElement getRememberBox;
+
+    @FindBy (xpath = "//*[@id=\"user-menu\"]/a")
+    public WebElement profilemenu;
+
 
 }

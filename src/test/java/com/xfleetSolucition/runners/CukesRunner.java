@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/xfleetSolucition/step_definitions",
         dryRun = false,
-        tags = "@Managers"
+        tags = "@ForgotPassB"
 )
 
 public class CukesRunner {

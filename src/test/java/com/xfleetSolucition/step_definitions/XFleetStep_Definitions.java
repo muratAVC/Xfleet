@@ -11,12 +11,13 @@ public class XFleetStep_Definitions {
 
     @Given("user must be able to enter {string}")
     public void user_must_be_able_to_enter(String string) {
-        //Driver.getDriver().get("http://qa.xfleetsolutions.com/user/login");
         xfleetPage.inputNameBox.sendKeys(string);
+        //System.out.println("username="+string);
     }
     @Given("user must be able to enter_p {string}")
     public void user_must_be_able_to_enter_p(String string) {
        xfleetPage.passwordBox.sendKeys(string);
+        //System.out.println("pass"+string);
     }
 
     @Given("user must be click to login button")
@@ -70,8 +71,45 @@ public class XFleetStep_Definitions {
         Assert.assertTrue(xfleetPage.dashBoard.isDisplayed());
     }
 
-    @And("user click login button")
-    public void userClickLoginButton() {
 
+    @And("user click login button {string} and {string}")
+    public void userClickLoginButtonAnd(String user, String pass) {
+        if ( user.length()==0 & pass.length()==0 ){
+            System.out.println("both empty");
+
+        }else if (user.length()==0 & pass.length()!=0){
+            System.out.println("user is empty");
+
+        } else if (user.length()!=0 & pass.length()==0){
+            System.out.println("pass empty");
+        }
+
+
+    }
+
+    @Given("user is forgot password")
+    public void userIsForgotPassword() {
+
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().equals("http://qa.xfleetsolutions.com/user/reset-request"));
+    }
+
+    @Given("user click to forgot password button")
+    public void userClickToForgotPasswordButton() {
+        xfleetPage.forgotPasswordButton.click();
+    }
+
+    @Given("user click to remember me button")
+    public void userClickToRememberMeButton() {
+        Assert.assertTrue(xfleetPage.rememberBox.isEnabled());
+    }
+
+    @Given("check the signs the password field")
+    public void checkTheSignsThePasswordField() {
+        Assert.assertTrue(xfleetPage.passwordBox.getAttribute("type").equals("password"));
+    }
+
+    @And("user can see username is profile menu")
+    public void userCanSeeUsernameIsProfileMenu() {
+        Assert.assertTrue(xfleetPage.profilemenu.isDisplayed());
     }
 }
