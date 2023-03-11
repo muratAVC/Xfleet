@@ -12,7 +12,7 @@ public class Hooks {
     }
     @Before(order = 0)
     public void setupScenarioForLogin(){
-        Driver.getDriver().get("http://qa.xfleetsolutions.com/user/login");
+        //Driver.getDriver().get("http://qa.xfleetsolutions.com/user/login");
         //System.out.println("before of scenario for Login");
     }
     @Before(value = "@db",order = 2)

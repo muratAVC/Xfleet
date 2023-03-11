@@ -1,5 +1,8 @@
 Feature: XFleet user  Feature
 
+  Background: user open the login page
+    Given open the login page
+
   @Drivers
   Scenario Outline: Driver should land on the "Quick Launchpad" page after successful login
     Given user must be able to enter "<username>"

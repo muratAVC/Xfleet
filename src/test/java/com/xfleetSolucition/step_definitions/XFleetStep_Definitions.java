@@ -1,6 +1,7 @@
 package com.xfleetSolucition.step_definitions;
 
 import com.xfleetSolucition.pages.XFleetPage;
+import com.xfleetSolucition.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
@@ -24,11 +25,14 @@ public class XFleetStep_Definitions {
     public void user_must_be_click_to_login_button() {
         xfleetPage.logButton.click();
     }
+
+
     @Given("driver should land on the quick Launchpad page")
     public void driver_should_land_on_the_quick_launchpad_page() {
+        BrowserUtils.waitForVisibility(xfleetPage.quickLaunchpad,10);
         Assert.assertTrue(xfleetPage.quickLaunchpad.isDisplayed());
-        xfleetPage.userMenu.click();
-        xfleetPage.logoutButton.click();
+        //xfleetPage.userMenu.click();
+        //xfleetPage.logoutButton.click();
     }
 
     @Given("invalid login user name {string}")
@@ -105,6 +109,13 @@ public class XFleetStep_Definitions {
 
     @And("user van see own username on profile menu")
     public void userVanSeeOwnUsernameOnProfileMenu() {
-        Assert.assertTrue(xfleetPage.userMenu.getText().contains("John Doe"));
+        //System.out.println("xfleetPage.userMenu.getText() = " + xfleetPage.userMenu.getText());
+        //Assert.assertEquals("John Doe ", xfleetPage.username.getAttribute("innerText"));
+        Assert.assertTrue(xfleetPage.username.getAttribute("innerText").contains("John Doe"));
+    }
+
+    @Given("open the login page")
+    public void openTheLoginPage() {
+        Driver.getDriver().get("http://qa.xfleetsolutions.com/user/login");
     }
 }

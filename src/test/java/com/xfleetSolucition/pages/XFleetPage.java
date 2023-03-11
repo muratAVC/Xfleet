@@ -19,8 +19,11 @@ public class XFleetPage {
     @FindBy (xpath = "//div[@class='pull-left']//h1")
     public WebElement quickLaunchpad;
 
-    @FindBy(xpath = "//*[@id=\"user-menu\"]/a")
+    @FindBy(xpath = "//*[@id=\"user-menu\"]/a/i")
     public WebElement userMenu;
+
+    @FindBy(xpath = "//*[@id=\"user-menu\"]/a")
+    public WebElement username;
 
     @FindBy(xpath = "//*[@id=\"user-menu\"]/ul/li[4]/a")
     public WebElement logoutButton;
