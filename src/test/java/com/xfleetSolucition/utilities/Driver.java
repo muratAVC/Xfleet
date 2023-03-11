@@ -3,6 +3,7 @@ package com.xfleetSolucition.utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -19,12 +20,25 @@ public class Driver {
     private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>();
 
     public static WebDriver getDriver (){
+        ///////////////
+
+        //ChromeOptions object
+        ChromeOptions opt = new ChromeOptions();
+        //set language to Spanish
+
+        opt.addArguments("--lang=en");
+        // configure options parameter to Chrome driver
+        //WebDriver driver = new ChromeDriver(opt);
+
+
+
+        /////////////////*/
         if (driverPool.get()==null){
             String browserName=ConfigurationReader.getProperty("browser");
             switch (browserName){
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    WebDriver driver=new ChromeDriver();
+                    WebDriver driver=new ChromeDriver(opt);
                     driverPool.set(driver);
                     driverPool.get().manage().window().maximize();
                     driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

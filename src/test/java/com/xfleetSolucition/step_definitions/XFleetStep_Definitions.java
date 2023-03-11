@@ -60,13 +60,18 @@ public class XFleetStep_Definitions {
 
     @And("user click login button {string} and {string}")
     public void userClickLoginButtonAnd(String user, String pass) {
+        xfleetPage.logButton.click();
+        //String asd=xfleetPage.inputNameBox.getText();
+        //System.out.println("selam buradayım");
         if ( user.length()==0 & pass.length()==0 ){
-            Assert.assertTrue(xfleetPage.inputNameBox.getAttribute("validationMessage").contains("Please fill out this field."));
+            Assert.assertTrue(xfleetPage.inputNameBox.getAttribute("validationMessage").equals("Please fill out this field."));
             //System.out.println("both empty");
+            System.out.println("xfleetPage.inputNameBox.getAttribute(\"validationMessage\") = " + xfleetPage.inputNameBox.getAttribute("validationMessage"));
 
         }else if (user.length()==0 & pass.length()!=0){
             Assert.assertTrue(xfleetPage.inputNameBox.getAttribute("validationMessage").contains("Please fill out this field."));
             //System.out.println("user is empty");
+            System.out.println("xfleetPage.inputNameBox.getAttribute(\"validationMessage\") = " + xfleetPage.inputNameBox.getAttribute("validationMessage"));
 
         } else if (user.length()!=0 & pass.length()==0){
             Assert.assertTrue(xfleetPage.passwordBox.getAttribute("validationMessage").contains("Please fill out this field."));
