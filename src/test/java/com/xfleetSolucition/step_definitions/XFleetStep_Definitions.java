@@ -47,21 +47,7 @@ public class XFleetStep_Definitions {
         xfleetPage.logButton.click();
     }
 
-    @Given("enpty username and password")
-    public void enpty_username_and_password() {
-
-    }
-    @Given("forgot password clickable")
-    public void forgot_password_clickable() {
-
-    }
-    @Given("User can see Remember Me link exists and is clickable on the login page")
-    public void user_can_see_remember_me_link_exists_and_is_clickable_on_the_login_page() {
-
-    }
-
-
-    @And("verify  not login")
+     @And("verify  not login")
     public void verifyNotLogin() {
         Assert.assertTrue(xfleetPage.invalidInformations.isDisplayed());
     }
@@ -75,13 +61,16 @@ public class XFleetStep_Definitions {
     @And("user click login button {string} and {string}")
     public void userClickLoginButtonAnd(String user, String pass) {
         if ( user.length()==0 & pass.length()==0 ){
-            System.out.println("both empty");
+            Assert.assertTrue(xfleetPage.inputNameBox.getAttribute("validationMessage").contains("Please fill out this field."));
+            //System.out.println("both empty");
 
         }else if (user.length()==0 & pass.length()!=0){
-            System.out.println("user is empty");
+            Assert.assertTrue(xfleetPage.inputNameBox.getAttribute("validationMessage").contains("Please fill out this field."));
+            //System.out.println("user is empty");
 
         } else if (user.length()!=0 & pass.length()==0){
-            System.out.println("pass empty");
+            Assert.assertTrue(xfleetPage.passwordBox.getAttribute("validationMessage").contains("Please fill out this field."));
+            //System.out.println("pass empty");
         }
 
 
@@ -89,8 +78,7 @@ public class XFleetStep_Definitions {
 
     @Given("user is forgot password")
     public void userIsForgotPassword() {
-
-        Assert.assertTrue(Driver.getDriver().getCurrentUrl().equals("http://qa.xfleetsolutions.com/user/reset-request"));
+        Assert.assertEquals("http://qa.xfleetsolutions.com/user/reset-request", Driver.getDriver().getCurrentUrl());
     }
 
     @Given("user click to forgot password button")
@@ -105,11 +93,13 @@ public class XFleetStep_Definitions {
 
     @Given("check the signs the password field")
     public void checkTheSignsThePasswordField() {
-        Assert.assertTrue(xfleetPage.passwordBox.getAttribute("type").equals("password"));
+        Assert.assertTrue(xfleetPage.passwordBox.getAttribute("type").contains("password"));
+        //Assert.assertEquals("password", xfleetPage.passwordBox.getAttribute("type"));
     }
 
-    @And("user can see username is profile menu")
-    public void userCanSeeUsernameIsProfileMenu() {
-        Assert.assertTrue(xfleetPage.profilemenu.isDisplayed());
+
+    @And("user van see own username on profile menu")
+    public void userVanSeeOwnUsernameOnProfileMenu() {
+        Assert.assertTrue(xfleetPage.userMenu.getText().contains("John Doe"));
     }
 }
