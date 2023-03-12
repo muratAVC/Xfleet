@@ -7,15 +7,16 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {
                 "html:target/cuc-report.html",
+                "json:target/cucumber.json",
                 "rerun:target/rerun.txt",
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber"
         },
         features = "src/test/resources/features",
         glue = "com/xfleetSolucition/step_definitions",
         dryRun = false,
-        tags = "@EnterKey"
+        tags = ""
 )
-
+//
 public class CukesRunner {
 
 }
