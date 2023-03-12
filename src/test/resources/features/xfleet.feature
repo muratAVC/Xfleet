@@ -1,9 +1,10 @@
+@XFLEET10-541
 Feature: XFleet user  Feature
 
   Background: user open the login page
     Given open the login page
 
-  @Drivers
+  @XFLEET10-532
   Scenario Outline: Driver should land on the "Quick Launchpad" page after successful login
     Given user must be able to enter "<username>"
     And user must be able to enter_p "<password>"
@@ -18,7 +19,7 @@ Feature: XFleet user  Feature
       | user3    | UserUser123 |
       | user4    | UserUser123 |
 
-  @Managers
+  @XFLEET10-533
   Scenario Outline: Sales Manager/ Store Manager should land on the "Dashboard" page after successful login
     Given user must be able to enter "<username>"
     And user must be able to enter_p "<password>"
@@ -34,7 +35,7 @@ Feature: XFleet user  Feature
       | storemanager55  | UserUser123 |
       | salesmanager141 | UserUser123 |
 
-  @InvalidUser
+  @XFLEET10-534
   Scenario Outline: Invalid username login
     Given invalid login user name "<invalidUserName>"
     And invalid login password "<invalidPassword>"
@@ -49,7 +50,7 @@ Feature: XFleet user  Feature
       | User1           | UserUser123     |
       | user 45         | UserUser123     |
 
-  @EmptyField
+  @XFLEET10-535
   Scenario Outline: Please fill out this field
     Given user must be able to enter "<username>"
     And user must be able to enter_p "<password>"
@@ -61,20 +62,35 @@ Feature: XFleet user  Feature
       |          | UserUser123 |
       | user2    |             |
 
-  @ForgotPassB
+  @XFLEET10-536
   Scenario: when user is forgot password
     Given user click to forgot password button
     And user is forgot password
 
 
-  @RememberMe
+  @XFLEET10-537
   Scenario: is clickable of remember me check box
     Given user click to remember me button
 
+  @XFLEET10-538
   Scenario: User should see the password in bullet signs by default
     Given check the signs the password field
 
-  @AllUsersLogin
+  @XFLEET10-539
+  Scenario Outline: Verify if the ‘Enter’ key of the keyboard is working correctly on the login page
+    Given user must be able to enter "<username>"
+    And user must be able to enter_p "<password>"
+    And user send the EnterKey
+    And user can see profile menu
+
+    Examples: Username and password informations
+      | username        | password    |
+      | user1           | UserUser123 |
+      | storemanager51  | UserUser123 |
+      | salesmanager142 | UserUser123 |
+
+
+  @XFLEET10-540
   Scenario Outline: All users can see their own usernames in the profile menu, after successful login
     Given user must be able to enter "<username>"
     And user must be able to enter_p "<password>"
@@ -87,18 +103,7 @@ Feature: XFleet user  Feature
       | storemanager52  | UserUser123 |
       | salesmanager141 | UserUser123 |
 
-  @EnterKey
-  Scenario Outline: Verify if the ‘Enter’ key of the keyboard is working correctly on the login page
-    Given user must be able to enter "<username>"
-    And user must be able to enter_p "<password>"
-    And user send the EnterKey
-    And user can see profile menu
 
-    Examples: Username and password informations
-      | username        | password    |
-      | user1           | UserUser123 |
-      | storemanager51  | UserUser123 |
-      | salesmanager142 | UserUser123 |
 
 
 
