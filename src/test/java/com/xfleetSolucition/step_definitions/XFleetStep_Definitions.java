@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
 import com.xfleetSolucition.utilities.Driver;
+import org.openqa.selenium.Keys;
 
 public class XFleetStep_Definitions {
     XFleetPage xfleetPage =new XFleetPage();
@@ -117,5 +118,15 @@ public class XFleetStep_Definitions {
     @Given("open the login page")
     public void openTheLoginPage() {
         Driver.getDriver().get("http://qa.xfleetsolutions.com/user/login");
+    }
+
+    @And("user send the EnterKey")
+    public void userSendTheEnterKey() {
+        xfleetPage.passwordBox.sendKeys(Keys.ENTER);
+    }
+
+    @And("user can see profile menu")
+    public void userCanSeeProfileMenu() {
+        Assert.assertTrue(xfleetPage.username.isDisplayed());
     }
 }
