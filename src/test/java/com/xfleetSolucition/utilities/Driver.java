@@ -21,17 +21,11 @@ public class Driver {
 
     public static WebDriver getDriver (){
         ///////////////
-
         //ChromeOptions object
         ChromeOptions opt = new ChromeOptions();
-        //set language to Spanish
-
+        //set language to English
         opt.addArguments("--lang=en");
         // configure options parameter to Chrome driver
-        //WebDriver driver = new ChromeDriver(opt);
-
-
-
         /////////////////*/
         if (driverPool.get()==null){
             String browserName=ConfigurationReader.getProperty("browser");

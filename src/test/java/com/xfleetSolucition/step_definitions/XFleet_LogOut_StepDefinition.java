@@ -5,8 +5,11 @@ import com.xfleetSolucition.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -45,9 +48,8 @@ public class XFleet_LogOut_StepDefinition {
         JavascriptExecutor javascriptExecutor=(JavascriptExecutor) Driver.getDriver();
         javascriptExecutor.executeScript("window.open()");
         //open the new tab
-        Set<String> winTab;
+        Set<String> winTab=Driver.getDriver().getWindowHandles();
         String winhandle=Driver.getDriver().getWindowHandle();
-        winTab=Driver.getDriver().getWindowHandles();
         String handle="";
         for (String each: winTab ) {
             if (winhandle.equals(each)){
@@ -64,8 +66,9 @@ public class XFleet_LogOut_StepDefinition {
     @And("user is try login")
     public void userIsTryLogin() throws InterruptedException {
         Driver.getDriver().get("https://qa.xfleetsolutions.com");
-        System.out.println("xFleetPage.profilemenu.isDisplayed() = " + xFleetPage.dashBoard.isDisplayed());
-        Assert.assertTrue(xFleetPage.dashBoard.isDisplayed());
-        Thread.sleep(3);
+        Thread.sleep(3000);
+        //WebDriverWait wait=new WebDriverWait(Driver.getDriver(),10);
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='oro-subtitle']")));
+        Assert.assertFalse(xFleetPage.dashBoard.isDisplayed());
     }
 }
