@@ -71,4 +71,15 @@ public class XFleet_LogOut_StepDefinition {
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='oro-subtitle']")));
         Assert.assertFalse(xFleetPage.dashBoard.isDisplayed());
     }
+
+    @Given("user waits more than three minutes")
+    public void userWaitsMoreThanThreeMinutes() throws InterruptedException {
+        int bekle=1000*60*4;
+        Thread.sleep(bekle);
+    }
+
+    @And("user should log out")
+    public void userShouldLogOut() {
+        Assert.assertFalse(xFleetPage.dashBoard.isDisplayed());
+    }
 }

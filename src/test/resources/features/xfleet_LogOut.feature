@@ -5,13 +5,14 @@ Feature: As a user, I should be able to log out
     Given user is must login
 
 
-
+  @Step1
   Scenario: The user can log out by using the log out button inside profile info and
             the User should land on the "Login" page after logging out.
       Given user is click to logout button
       And user can see login page
 
 
+    @Step2
   Scenario: The user can not go to the home page again by clicking the
             step back button after successfully logging out.
     Given user is click to logout button
@@ -26,9 +27,8 @@ Feature: As a user, I should be able to log out
     Given user is closes the open page
     And user is try login
 
-
-
-
-
+  @Step4
   Scenario: The user must be logged out if the user is away from the keyboard for 3 minutes (AFK)
   (if the user does not do any  mouse or keyboard action for 3 minutes)
+    Given user waits more than three minutes
+    And user should log out
