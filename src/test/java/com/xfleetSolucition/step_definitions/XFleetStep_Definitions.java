@@ -129,4 +129,6 @@ public class XFleetStep_Definitions {
     public void userCanSeeProfileMenu() {
         Assert.assertTrue(xfleetPage.username.isDisplayed());
     }
+
+
 }

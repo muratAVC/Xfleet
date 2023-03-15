@@ -10,6 +10,9 @@ public class XFleetPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+    @FindBy(xpath = "//*[@id=\"login-form\"]/div[2]/h2")
+    public WebElement loginPageText;
+
     @FindBy(id = "prependedInput")
     public WebElement inputNameBox;
 
