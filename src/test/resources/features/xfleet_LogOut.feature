@@ -14,10 +14,19 @@ Feature: As a user, I should be able to log out
 
   Scenario: The user can not go to the home page again by clicking the
             step back button after successfully logging out.
+    Given user is click to logout button
+    And user can see login page
+    And user click to back button
+    And user can see login page
 
 
+    @Step3
   Scenario: The user must be logged out if the user closes the open tab
             (all tabs if there are multiple open tabs)
+    Given user is closes the open page
+    And user is try login
+
+
 
 
 
