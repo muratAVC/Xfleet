@@ -27,7 +27,7 @@ Feature: As a user, I should be able to log out
     Given user is closes the open page
     And user is try login
 
-  @XFLEET10-667
+  @XFLEET10-667 @test
   Scenario: The user must be logged out if the user is away from the keyboard for 3 minutes (AFK)
   (if the user does not do any  mouse or keyboard action for 3 minutes)
     Given user waits more than three minutes
