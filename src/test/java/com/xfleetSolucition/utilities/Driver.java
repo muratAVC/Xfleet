@@ -44,7 +44,7 @@ public class Driver {
                     driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
                 case "remote-chrome":
-                    String gridAdress = "54.89.242.106"; // put your own Linux grid IP here
+                    String gridAdress = "   44.204.138.59"; // put your own Linux grid IP here
                     try {
                         URL url = new URL("http://"+gridAdress+":4444/wd/hub");
                         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();

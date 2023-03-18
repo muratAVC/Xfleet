@@ -5,7 +5,7 @@ Feature: As a user, I should be able to log out
     Given user is must login
 
 
-  @XFLEET10-664
+  @XFLEET10-664  @Smoke
   Scenario: The user can log out by using the log out button inside profile info and
             the User should land on the "Login" page after logging out.
       Given user is click to logout button
