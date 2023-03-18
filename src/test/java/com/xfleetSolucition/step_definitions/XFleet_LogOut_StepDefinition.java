@@ -69,7 +69,8 @@ public class XFleet_LogOut_StepDefinition {
         Thread.sleep(3000);
         //WebDriverWait wait=new WebDriverWait(Driver.getDriver(),10);
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='oro-subtitle']")));
-        Assert.assertFalse(xFleetPage.dashBoard.isDisplayed());
+        Assert.assertFalse(xFleetPage.dashBoard.isDisplayed());//user can not see dashboard
+        //user is should logout.
     }
 
     @Given("user waits more than three minutes")
@@ -81,7 +82,7 @@ public class XFleet_LogOut_StepDefinition {
 
     @And("user should log out")
     public void userShouldLogOut() {
-        Assert.assertFalse(xFleetPage.dashBoard.isDisplayed());
+        Assert.assertFalse(xFleetPage.dashBoard.isDisplayed());//user can not see dashboard
         //user is should logouts
     }
 }
