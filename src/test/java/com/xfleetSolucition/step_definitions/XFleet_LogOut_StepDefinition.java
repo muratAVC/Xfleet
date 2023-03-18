@@ -76,10 +76,12 @@ public class XFleet_LogOut_StepDefinition {
     public void userWaitsMoreThanThreeMinutes() throws InterruptedException {
         int bekle=1000*60*4;
         Thread.sleep(bekle);
+        Driver.getDriver().navigate().refresh();
     }
 
     @And("user should log out")
     public void userShouldLogOut() {
         Assert.assertFalse(xFleetPage.dashBoard.isDisplayed());
+        //user is should logouts
     }
 }
